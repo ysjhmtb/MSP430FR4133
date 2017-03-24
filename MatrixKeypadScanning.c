@@ -14,12 +14,12 @@ void main(void) {
     volatile int flag=1;
     P1DIR |= 0xfb;
     P1OUT |= 0xfb;
-    P2DIR |= 0x20;//P2.5 ¿⁄∏¥ºˆ
+    P2DIR |= 0x20;//P2.5 ÏûêÎ¶øÏàò
     P2OUT |= 0x00;
-    P5DIR |= 0x00;//ROW ∫Œ∫– ø¨∞·
+    P5DIR |= 0x00;//ROW Î∂ÄÎ∂Ñ Ïó∞Í≤∞
     P5OUT |= 0x0f;
     P5REN |= 0x0f;
-    P8DIR |= 0x0f;//COL   ∫Œ∫– ø¨∞·1
+    P8DIR |= 0x0f;//COL   Î∂ÄÎ∂Ñ Ïó∞Í≤∞1
     P8OUT |= 0x0f;
     while(1){
        for(i=0;i<3;i++)
