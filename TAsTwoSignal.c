@@ -1,7 +1,7 @@
 #include <msp430.h>
 #include <intrinsics.h>
-#define CCR1INTVAL 32768  // 1sec
-#define CCR2INTVAL 32768/3	  // 0.3sec
+#define CCR1INTVAL 32768 
+#define CCR2INTVAL 32768/3	 
 #pragma vector = TIMER0_A1_VECTOR
 __interrupt void isr(void){
 	switch(TA0IV){
