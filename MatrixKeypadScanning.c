@@ -24,7 +24,7 @@ void main(void) {
     while(1){
        for(i=0;i<3;i++)
        {
-6          P8OUT &= ~(0x01<<i);
+          P8OUT &= ~(0x01<<i);
           P8OUT &= 0x07;
           sw1 = P5IN & 0x0f;
           if(sw1!=0x0f)
