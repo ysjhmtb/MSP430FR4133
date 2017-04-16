@@ -41,8 +41,8 @@ int main(void)
     TA0CCR0 = 100 - 1;  // 0-99     100 / 1,000,000 = 0.1ms 10kHz
     TA0CCR1 = 60 - 1;   // 0-59
     
-    TA0CTL = 0x0220;    // 0000 0010 0010 0000  SMCLK/1 Continuous
-    TA0CCTL2 = 0x4910;  // 0100 1001 0001 0000 rising capture
+    TA1CTL = 0x0220;    // 0000 0010 0010 0000  SMCLK/1 Continuous
+    TA1CCTL2 = 0x4910;  // 0100 1001 0001 0000 rising capture
     TA1CCR2 = 0;
     
     __enable_interrupt();
