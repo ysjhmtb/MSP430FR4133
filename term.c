@@ -1,4 +1,3 @@
-
 #include <msp430.h>
 
 int hour = 14, min = 10, sec = 55;
@@ -15,12 +14,6 @@ char UCAmapping2[26] = {0x00,0x82,0x00,0x00,0x00,0x00,0x00,0x00,0x50,0x48,0x22,0
 
 void init_LCD()
 {
-
- P8DIR|=0x07;//col output 세로
-
- P5DIR&=~0x0f;//row input 가로
- P5REN|=0x0f;
- P5OUT|=0x0f;
 
  SYSCFG2|=0x1000;
 
@@ -151,4 +144,3 @@ int main(void)
         }
     }
 }
-
