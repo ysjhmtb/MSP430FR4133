@@ -2,6 +2,7 @@
 #include <msp430.h>
 
 int hour = 14, min = 10, sec = 55;
+int mode = 0;
 
 
 char mapping1[]={0xfc,0x00,0xdb,0xf3,0x07,0xb7,0xbf,0xe0,0xff,0xf7,0xef,0xfc,0x9e};//0~9
@@ -109,10 +110,14 @@ int main(void)
 
     __enable_interrupt();
 
-    while(1)
-    {
+    while(1) {
+        mode = 0;
 
+        if(hour == 14 && min == 11 ) {
+            mode = 1;
+        }
 
+        if(mode == 0) {
             display_char(6,sec%10);
             display_char(5,sec/10);
             display_char(4,min%10);
@@ -120,46 +125,30 @@ int main(void)
             display_char(2,hour%10);
             display_char(1,hour/10);
 
-        if(hour == 14 && min == 11 )
-            {
-                break;
-            }
-
-    }
-
-    while(sec<30)
-    {
-
-    LCDM4=UCAmapping1[6];
-    LCDM5=UCAmapping2[6];
-
-    LCDM6=UCAmapping1[4];
-    LCDM7=UCAmapping2[4];
-
-    LCDM8=UCAmapping1[19];
-    LCDM9=UCAmapping2[19];
-
-    LCDM10=UCAmapping1[20];
-    LCDM11=UCAmapping2[20];
-
-    LCDM2=UCAmapping1[15];
-    LCDM3=UCAmapping2[15];
-
-    LCDM18=mapping1[sec%10];
-    LCDM19=mapping2[sec%10];
-
-    }
-
-    while(1)
-        {
-                display_char(6,sec%10);
-                display_char(5,sec/10);
-                display_char(4,min%10);
-                display_char(3,min/10);
-                display_char(2,hour%10);
-                display_char(1,hour/10);
+            P1OUT = 0x00;
         }
 
-}
+        if(mode == 1) {
+            LCDM4=UCAmapping1[6];
+            LCDM5=UCAmapping2[6];
 
+            LCDM6=UCAmapping1[4];
+            LCDM7=UCAmapping2[4];
+
+            LCDM8=UCAmapping1[19];
+            LCDM9=UCAmapping2[19];
+
+            LCDM10=UCAmapping1[20];
+            LCDM11=UCAmapping2[20];
+
+            LCDM2=UCAmapping1[15];
+            LCDM3=UCAmapping2[15];
+
+            LCDM18=mapping1[sec%10];
+            LCDM19=mapping2[sec%10];
+
+            P1OUT = 0x01;
+        }
+    }
+}
 
